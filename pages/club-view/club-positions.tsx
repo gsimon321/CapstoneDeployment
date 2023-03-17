@@ -143,4 +143,4 @@ export type PositionProps = {
   )
 }
 
-export default ClubPositions
+export default ClubPositions;

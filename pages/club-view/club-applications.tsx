@@ -69,5 +69,4 @@ const ApplicationPage: FC<ApplicationProps> = ({
     </div>
   )
 }
-
 export default ApplicationPage;
