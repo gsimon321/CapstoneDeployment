@@ -1,7 +1,7 @@
 import { styled } from '@nextui-org/react';
 
 // IconButton component will be available as part of the core library soon
-export default const IconButton = styled('button', {
+export default IconButton = styled('button', {
   dflex: 'center',
   border: 'none',
   outline: 'none',
