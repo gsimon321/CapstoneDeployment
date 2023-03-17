@@ -17,7 +17,7 @@ type applicationResponse = {
   qA: [{ answer: string; question: string }]
 }
 
-export const ApplicationPage: FC<ApplicationProps> = ({
+const ApplicationPage: FC<ApplicationProps> = ({
   position_id,
   position_name,
 }) => {
@@ -69,3 +69,5 @@ export const ApplicationPage: FC<ApplicationProps> = ({
     </div>
   )
 }
+
+export default ApplicationPage;

@@ -16,7 +16,7 @@ export type PositionProps = {
   applicationNavigator: (position_id: string, positionName: string) => void
 }
 
-export const ClubPositions: FC<PositionProps> = ({
+ const ClubPositions: FC<PositionProps> = ({
   ID,
   applicationNavigator,
 }) => {
@@ -142,3 +142,5 @@ export const ClubPositions: FC<PositionProps> = ({
     </div>
   )
 }
+
+export default ClubPositions
