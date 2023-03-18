@@ -7,7 +7,7 @@ const object = require('../models/Object')
 module.exports = {
   Query: {
     //look up object syntax
-    async club(_, { ID }) {
+    club: async (_, { ID })=> {
       let res = await Club.findById(ID)
       let logoRes = await object.find({objType: "logo", objId: ID})
       console.log(logoRes)
@@ -45,7 +45,7 @@ module.exports = {
       }
       return finalRes
     },
-    async getClubs(_, { amount }) {
+    getClubs: async (_, { amount }) => {
       if (amount == null) {
         return await Club.find()
       }
@@ -53,10 +53,10 @@ module.exports = {
     },
   },
   Mutation: {
-    async createClub(
+    createClub: async (
       _,
       { clubInput: { name, department, description, execs } },
-    ) {
+    ) => {
       const createdClub = new Club({
         name: name,
         department: department,
@@ -73,7 +73,7 @@ module.exports = {
         ...res._doc,
       }
     },
-    async deleteClub(_, { ID }) {
+    deleteClub: async (_, { ID }) => {
       const wasDeleted = (await Club.deleteOne({ _id: ID })).deletedCount
       return wasDeleted
       //1 if something was deleted, 0 if nothing was deleted
@@ -82,10 +82,10 @@ module.exports = {
     //     const wasEdited = (await Club.updateOne({_id: ID}, {name: name, department: department, description: description, execs: execs})).modifiedCount;
     //     return wasEdited;
     // }
-    async editClub(
+    editClub: async(
       _,
       { ID, clubInput: { name, department, description, execs } },
-    ) {
+    ) =>{
       console.log(name, department, execs, description)
       var changedClub = 0
       if (name) {
@@ -111,10 +111,10 @@ module.exports = {
 
       return changedClub
     },
-    async addExec(
+    addExec: async (
       _,
       { clubId, execAdd: { name, role, year, program} }
-    ) {
+    ) =>{
       console.log(name)
       let newExec = {
         name: name,
@@ -126,10 +126,10 @@ module.exports = {
       let res = await Club.findById(clubId)
       return res.execs[res.execs.length - 1]
     },
-    async editExec(
+    editExec: async (
       _,
       { clubId, execInput: {  _id, name, role, year, program }}
-    ){
+    )=>{
       let execUpdate = {
         _id: _id,
         name: name,

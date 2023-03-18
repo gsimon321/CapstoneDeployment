@@ -5,10 +5,10 @@ const transporter = require('../email/transporter')
 module.exports = {
   Query: {
     //look up object syntax
-    async application(_, { ID }) {
+    application: async(_, { ID }) =>{
       return await Application.findByID(ID)
     },
-    async getApplications(_, { amount, positionID }) {
+    getApplications: async (_, { amount, positionID }) => {
       if (positionID == null) {
         return await Application.find().sort({ name: -1 }).limit(amount)
       }
@@ -44,7 +44,7 @@ module.exports = {
         ...res._doc,
       }
     },
-    async deleteApplication(_, { ID }) {
+    deleteApplication: async (_, { ID }) => {
       const wasDeleted = (await Application.deleteOne({ _id: ID })).deletedCount
       return wasDeleted
       //1 if something was deleted, 0 if nothing was deleted

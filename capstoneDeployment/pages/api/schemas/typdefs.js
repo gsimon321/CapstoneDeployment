@@ -9,7 +9,6 @@ module.exports = gql`
     application(ID: ID!): Application!
     getApplications(amount: Int, positionID: String): [Application]
     user(id: ID!): User
-    getObjects(objType: String, objId: String): [Object]
   }
 
   type Mutation {

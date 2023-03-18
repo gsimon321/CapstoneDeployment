@@ -17,10 +17,10 @@ import { Router, useRouter } from 'next/router'
  */
 module.exports = {
   Mutation: {
-    async registerUser(
+    registerUser: async (
       _,
       { registerInput: { name, email, password, role, clubName } },
-    ) {
+    ) =>{
       // See if user already exists
       console.log(name, email, role, password)
       email = email.toLowerCase()
@@ -96,7 +96,7 @@ module.exports = {
         ...res._doc,
       }
     },
-    async loginUser(_, { loginInput: { email, password } }) {
+    loginUser: async (_, { loginInput: { email, password } }) => {
       // Check if user exists
       const user = await User.findOne({ email })
       console.log(user.confirmed)

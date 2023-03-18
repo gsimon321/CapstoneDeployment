@@ -5,10 +5,10 @@ const Position = require('../models/Position')
 module.exports = {
   Query: {
     //look up object syntax
-    async position(_, { ID }) {
+    position: async (_, { ID }) => {
       return await Position.findById(ID)
     },
-    async getPositions(_, { amount, clubId }) {
+    getPositions: async (_, { amount, clubId }) => {
       if (clubId == null) {
         return await Position.find().sort({ name: -1 }).limit(amount)
       }
@@ -16,7 +16,7 @@ module.exports = {
     },
   },
   Mutation: {
-    async createPosition(
+    createPosition: async (
       _,
       {
         positionInput: {
@@ -28,7 +28,7 @@ module.exports = {
           clubId,
         },
       },
-    ) {
+    ) => {
       const createdPosition = new Position({
         name: name,
         description: description,
@@ -44,12 +44,12 @@ module.exports = {
         ...res._doc,
       }
     },
-    async deletePosition(_, { ID }) {
+    deletePosition: async (_, { ID }) => {
       const wasDeleted = (await Position.deleteOne({ _id: ID })).deletedCount
       return wasDeleted
       //1 if something was deleted, 0 if nothing was deleted
     },
-    async editPosition(
+    editPosition: async (
       _,
       {
         ID,
@@ -62,7 +62,7 @@ module.exports = {
           clubId,
         },
       },
-    ) {
+    ) => {
       const wasEdited = (
         await Position.updateOne(
           { _id: ID },
