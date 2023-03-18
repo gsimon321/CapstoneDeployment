@@ -5,7 +5,7 @@ const transporter = require('../email/transporter')
 module.exports = {
   Query: {
     //look up object syntax
-    async function application(_, { ID }) {
+    async application(_, { ID }) {
       return await Application.findByID(ID)
     },
     async getApplications(_, { amount, positionID }) {
