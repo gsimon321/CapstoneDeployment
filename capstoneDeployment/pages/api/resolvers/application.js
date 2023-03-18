@@ -15,7 +15,7 @@ module.exports = {
       return await Application.find({ positionID: positionID })
     },
   },
-  Mutation: 
+  Mutation: {
     async function createApplication(
       _,
       {
@@ -72,3 +72,4 @@ module.exports = {
       //1 if something was deleted, 0 if nothing was deleted
     },
   },
+}
