@@ -5,7 +5,7 @@ const transporter = require('../email/transporter')
 module.exports = {
   Query: {
     //look up object syntax
-    async application(_, { ID }) {
+    async function application(_, { ID }) {
       return await Application.findByID(ID)
     },
     async getApplications(_, { amount, positionID }) {
@@ -16,7 +16,7 @@ module.exports = {
     },
   },
   Mutation: 
-    async createApplication(
+    async function createApplication(
       _,
       {
         applicationInput: {
@@ -72,4 +72,3 @@ module.exports = {
       //1 if something was deleted, 0 if nothing was deleted
     },
   },
-}
