@@ -2,7 +2,7 @@ import StudentCard from './student-card'
 import React, { useState, useEffect } from 'react'
 import APILoadingScreen from './loading-screen'
 import { gql } from '@apollo/client'
-import client from '../apollo-client'
+import client from '../../components/apollo-client'
 import StudentHeader from './student-header'
 
 export default function studentLanding(props) {

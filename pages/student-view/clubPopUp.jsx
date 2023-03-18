@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { gql } from '@apollo/client'
-import client from '../apollo-client'
+import client from '../../components/apollo-client'
 import PositionsTable from './positions-table'
 import StudentExecCard from './student-exec'
 
