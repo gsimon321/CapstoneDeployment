@@ -1,6 +1,6 @@
 import { position } from '../public/interfaces/position.interface'
 import { gql } from '@apollo/client'
-import client from '../pages/apollo-client'
+import client from '../components/apollo-client'
 
 type positionReturn = {
   clubId: string

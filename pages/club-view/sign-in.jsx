@@ -6,7 +6,7 @@ import { CSS, Button, Loading, Input } from '@nextui-org/react'
 import { useState, useRef, useEffect, localStorage } from 'react'
 import { Router, useRouter } from 'next/router'
 import { gql, useMutation } from '@apollo/client'
-import client from '../apollo-client'
+import client from '../../components/apollo-client'
 import { logMissingFieldErrors } from '@apollo/client/core/ObservableQuery'
 
 

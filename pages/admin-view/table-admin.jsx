@@ -6,7 +6,7 @@ import  DeleteIconWrapper  from "../club-view/components/DeleteIcon";
 import {useState, React, useEffect} from 'react'
 import { Modal, Button,  Input,  Checkbox } from "@nextui-org/react";
 import { gql, useMutation } from '@apollo/client'
-import client from '../apollo-client'
+import client from '../../components/apollo-client'
 
 export default function tableAdmin(props) {
     const [name, setName] = useState('')

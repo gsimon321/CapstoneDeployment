@@ -1,9 +1,9 @@
 import React, { FC, useCallback, useEffect, useState } from 'react'
-import styles from '../../styles/application.module.css'
-import { getApplications } from '../../services/applications-service'
+import styles from '../styles/application.module.css'
+import { getApplications } from '../services/applications-service'
 import { Text } from '@nextui-org/react'
-import { application, field } from '../../public/interfaces/position.interface'
-import { getPositions } from '../../services/positions-service'
+import { application, field } from '../public/interfaces/position.interface'
+import { getPositions } from '../services/positions-service'
 
 export type ApplicationProps = {
   position_id: string

@@ -1,14 +1,14 @@
 import React, { FC, useState, useEffect, useCallback } from 'react'
-import { position } from '../../public/interfaces/position.interface'
+import { position } from '../public/interfaces/position.interface'
 import {
   getPositions,
   deletePosition,
   getPosition,
-} from '../../services/positions-service'
+} from '../services/positions-service'
 import styles from '../../styles/club-positions.module.css'
 import { Button, Text } from '@nextui-org/react'
-import { CreatePositionPage } from '../../components/create_position'
-import { EditPositionPage } from '../../components/edit_position'
+import { CreatePositionPage } from './create_position'
+import { EditPositionPage } from './edit_position'
 import Link from 'next/link'
 
 export type PositionProps = {

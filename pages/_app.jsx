@@ -3,7 +3,6 @@ import '../styles/globals.css'
 import { NextUIProvider } from '@nextui-org/react'
 import { createTheme } from '@nextui-org/react'
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
-// import client from './apollo-client.js'
 import { createUploadLink } from "apollo-upload-client";
 
 const theme = createTheme({

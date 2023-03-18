@@ -1,9 +1,9 @@
-import { CreateModalBody }from '../../components/create_position_modal'
-import { UpdateModalBody } from '../../components/update_position_modal'
-import { position } from '../../public/interfaces/position.interface'
+import { CreateModalBody }from './create_position_modal'
+import { UpdateModalBody } from './update_position_modal'
+import { position } from '../public/interfaces/position.interface'
 import {FC, useEffect, useState} from "react";
 
-import styles from '../../styles/modal-positions.module.css'
+import styles from '../styles/modal-positions.module.css'
 
 // import { Sidebar } from "../components";
 // import { pageManifest } from "../page-manifest";
@@ -12,7 +12,7 @@ import {
   getPositions,
   deletePosition,
   getPosition, updatePosition, createPosition,
-} from '../../services/positions-service'
+} from '../services/positions-service'
 
 export type PositionProps = {
   ID: string

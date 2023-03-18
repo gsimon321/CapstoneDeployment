@@ -1,6 +1,6 @@
 import { position } from '../public/interfaces/position.interface'
 import { gql } from '@apollo/client'
-import client from '../pages/apollo-client'
+import client from '../components/apollo-client'
 
 export async function getApplications(position_id: string) {
   const query = gql`

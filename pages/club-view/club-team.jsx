@@ -6,7 +6,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Input, Spacer, Text, Card, Grid } from '@nextui-org/react'
 import { Router, useRouter } from 'next/router'
 import { gql } from '@apollo/client'
-import client from '../apollo-client'
+import client from '../../components/apollo-client'
 
 import Table from './components/table'
 

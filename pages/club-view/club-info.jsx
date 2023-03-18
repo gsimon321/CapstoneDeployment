@@ -7,7 +7,7 @@ import { useState, useRef, useEffect, localStorage } from 'react'
 import ImageProcess from './image-processing'
 import useSWR from 'swr'
 import { gql, useMutation } from '@apollo/client'
-import client from '../apollo-client'
+import client from '../../components/apollo-client'
 import { Router, useRouter } from 'next/router'
 import graphql from 'graphql'
 

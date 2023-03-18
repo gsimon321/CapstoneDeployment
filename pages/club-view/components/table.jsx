@@ -7,7 +7,7 @@ import {useState, React, useEffect} from 'react'
 import { Modal, Button,  Input,  Checkbox } from "@nextui-org/react";
 import Dropdown from './dropdown'
 import { gql, useMutation } from '@apollo/client'
-import client from '../../apollo-client'
+import client from '../../../components/apollo-client'
 
 export default function table(props) {
     const [name, setName] = useState('')
