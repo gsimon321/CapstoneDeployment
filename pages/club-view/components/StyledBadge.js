@@ -1,7 +1,7 @@
 import { styled } from '@nextui-org/react';
 
 // Badge component will be available as part of the core library soon
-export default StyledBadge = styled('span', {
+export const StyledBadge = styled('span', {
   display: 'inline-block',
   textTransform: 'uppercase',
   padding: '$2 $3',

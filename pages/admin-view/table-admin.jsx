@@ -1,7 +1,7 @@
 import { Table, Row, Col, Tooltip, User, Text } from "@nextui-org/react";
-import StyledBadge  from "../club-view/components/StyledBadge";
-import  IconButton  from "../club-view/components/IconButton";
-import  EditIcon  from "../club-view/components/EditIcon";
+import { StyledBadge } from "../club-view/components/StyledBadge";
+import { IconButton } from "../club-view/components/IconButton";
+import { EditIcon } from "../club-view/components/EditIcon";
 import  DeleteIcon  from "../club-view/components/DeleteIcon";
 import {useState, React, useEffect} from 'react'
 import { Modal, Button,  Input,  Checkbox } from "@nextui-org/react";
@@ -166,7 +166,7 @@ export default function tableAdmin(props) {
                 onClick={() => {editUser(user, columnKey); setAction('delete'); toggleHigh();  }}
               >
                 <IconButton >
-                  <DeleteIcon size={20} fill="#FF0080" />
+                  <DeleteIconWrapper size={20} fill="#FF0080" />
                 </IconButton>
               </Tooltip>
             </Col>
