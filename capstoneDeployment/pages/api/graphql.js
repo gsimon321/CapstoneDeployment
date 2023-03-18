@@ -1,9 +1,8 @@
 import  {  ApolloServer  }  from  "apollo-server-micro";
 import connectDb from './config/connectionDB'
-import processRequest from "graphql-upload/processRequest.js";
+// import processRequest from "graphql-upload/processRequest.js";
 console.log(ApolloServer)
 
-console.log(processRequest)
 
 const typeDefs = require("./schemas/typdefs")
 const resolvers = require("./resolvers/index")
@@ -40,10 +39,10 @@ export default async (req, res) => {
 
   
   
-  if (contentType && contentType.startsWith('multipart/form-data')) {
+  // if (contentType && contentType.startsWith('multipart/form-data')) {
 
-    req.filePayload = await processRequest(req, res)
-  }
+  //   req.filePayload = await processRequest(req, res)
+  // }
 
   await startServer
 
