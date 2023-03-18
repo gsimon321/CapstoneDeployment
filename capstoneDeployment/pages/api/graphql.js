@@ -1,5 +1,6 @@
 import  {  ApolloServer  }  from  "apollo-server-micro";
 import Cors from 'micro-cors';
+const { gql } = require('apollo-server-micro')
 import connectDb from './config/connectionDB'
 // import processRequest from "graphql-upload/processRequest.js";
 console.log(ApolloServer)
