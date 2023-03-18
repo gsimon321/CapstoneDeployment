@@ -10,7 +10,7 @@ const resolvers = require("./resolvers/index")
 connectDb();
 
 
-const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, uploads:false persistedQueries: {
+const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, uploads:false, persistedQueries: {
   cache: new Map(),
 }, });
 const startServer = apolloServer.start()
