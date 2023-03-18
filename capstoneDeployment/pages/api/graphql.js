@@ -186,7 +186,7 @@ const resolvers = require("./resolvers/index")
 connectDb();
 
 
-const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, context: ({req}) =>{},introspection:true, playground:true, });
+const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, cache: "bounded", context: ({req}) =>{},introspection:true, playground:true, });
 const startServer = apolloServer.start()
 
 export default cors( async (req, res) => {
