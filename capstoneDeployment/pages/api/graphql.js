@@ -10,7 +10,9 @@ const resolvers = require("./resolvers/index")
 connectDb();
 
 
-const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, uploads:false });
+const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, uploads:false persistedQueries: {
+  cache: new Map(),
+}, });
 const startServer = apolloServer.start()
 
 export default async (req, res) => {
