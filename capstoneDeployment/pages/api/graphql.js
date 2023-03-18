@@ -1,6 +1,6 @@
 import  {  ApolloServer  }  from  "apollo-server-micro";
 import connectDb from './config/connectionDB'
-import processRequest from "graphql-upload/processRequest.mjs";
+import processRequest from "graphql-upload/processRequest.js";
 console.log(ApolloServer)
 
 console.log(processRequest)
