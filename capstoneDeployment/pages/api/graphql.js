@@ -1,5 +1,5 @@
 import { ApolloServer } from "apollo-server-micro";
-import { graphqlUploadExpress } from "graphql-upload";
+import graphqlUploadExpress from "graphql-upload";
 import connectDb from "./config/connectionDB";
 import processRequest from "graphql-upload/processRequest.mjs";
 
