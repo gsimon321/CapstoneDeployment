@@ -1,8 +1,8 @@
 import { Table, Row, Col, Tooltip, User, Text } from "@nextui-org/react";
-import { StyledBadge } from "../club-view/components/StyledBadge";
-import { IconButton } from "../club-view/components/IconButton";
-import { EditIcon } from "../club-view/components/EditIcon";
-import  DeleteIcon  from "../club-view/components/DeleteIcon";
+import  StyledBadgeWrapper  from "../club-view/components/StyledBadge";
+import  IconButtonWrapper  from "../club-view/components/IconButton";
+import  EditIconWrapper  from "../club-view/components/EditIcon";
+import  DeleteIconWrapper  from "../club-view/components/DeleteIcon";
 import {useState, React, useEffect} from 'react'
 import { Modal, Button,  Input,  Checkbox } from "@nextui-org/react";
 import { gql, useMutation } from '@apollo/client'
@@ -147,16 +147,16 @@ export default function tableAdmin(props) {
           </Col>
         );
       case "year":
-        return <StyledBadge type={user.status}>{cellValue}</StyledBadge>;
+        return <StyledBadgeWrapper type={user.status}>{cellValue}</StyledBadge>;
 
       case "actions":
         return (
           <Row justify="center" align="center">
             <Col css={{ d: "flex" }}>
               <Tooltip  content="Edit user">
-                <IconButton  onClick={() => {editUser(user, columnKey);  setAction('edit'); toggleHigh();} }>
-                  <EditIcon  size={20} fill="#979797" />
-                </IconButton>
+                <IconButtonWrapper  onClick={() => {editUser(user, columnKey);  setAction('edit'); toggleHigh();} }>
+                  <EditIconWrapper  size={20} fill="#979797" />
+                </IconButtonWrapper>
               </Tooltip>
             </Col>
             <Col css={{ d: "flex" }}>
@@ -165,9 +165,9 @@ export default function tableAdmin(props) {
                 color="error"
                 onClick={() => {editUser(user, columnKey); setAction('delete'); toggleHigh();  }}
               >
-                <IconButton >
+                <IconButtonWrapper >
                   <DeleteIconWrapper size={20} fill="#FF0080" />
-                </IconButton>
+                </IconButtonWrapper>
               </Tooltip>
             </Col>
           </Row>

@@ -1,7 +1,7 @@
 import { Table, Row, Col, Tooltip, User, Text } from "@nextui-org/react";
-import { StyledBadge } from "./StyledBadge";
-import { IconButton } from "./IconButton";
-import { EditIcon } from "./EditIcon";
+import  StyledBadgeWrapper  from "./StyledBadge";
+import  IconButtonWrapper  from "./IconButton";
+import  EditIconWrapper  from "./EditIcon";
 import  DeleteIconWrapper  from "./DeleteIcon";
 import {useState, React, useEffect} from 'react'
 import { Modal, Button,  Input,  Checkbox } from "@nextui-org/react";
@@ -147,16 +147,16 @@ export default function table(props) {
           </Col>
         );
       case "year":
-        return <StyledBadge type={user.status}>{cellValue}</StyledBadge>;
+        return <StyledBadgeWrapper type={user.status}>{cellValue}</StyledBadge>;
 
       case "actions":
         return (
           <Row justify="center" align="center">
             <Col css={{ d: "flex" }}>
               <Tooltip  content="Edit user">
-                <IconButton  onClick={() => {editUser(user, columnKey);  setAction('edit'); toggleHigh();} }>
-                  <EditIcon  size={20} fill="#979797" />
-                </IconButton>
+                <IconButtonWrapper  onClick={() => {editUser(user, columnKey);  setAction('edit'); toggleHigh();} }>
+                  <EditIconWrapper  size={20} fill="#979797" />
+                </IconButtonWrapper>
               </Tooltip>
             </Col>
             <Col css={{ d: "flex" }}>
@@ -165,9 +165,9 @@ export default function table(props) {
                 color="error"
                 onClick={() => {editUser(user, columnKey); setAction('delete'); toggleHigh();  }}
               >
-                <IconButton >
+                <IconButtonWrapper >
                   <DeleteIconWrapper size={20} fill="#FF0080" />
-                </IconButton>
+                </IconButtonWrapper>
               </Tooltip>
             </Col>
           </Row>

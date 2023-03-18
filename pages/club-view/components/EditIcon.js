@@ -1,4 +1,4 @@
-export const EditIcon = ({
+const EditIcon = ({
     fill,
     size,
     height,
@@ -42,3 +42,6 @@ export const EditIcon = ({
     );
   };
   
+  export default function EditIconWrapper(props) {
+    return <DeleteIcon {...props} />;
+  }

@@ -1,7 +1,7 @@
 import { styled } from '@nextui-org/react';
 
 // Badge component will be available as part of the core library soon
-export const StyledBadge = styled('span', {
+const StyledBadge = styled('span', {
   display: 'inline-block',
   textTransform: 'uppercase',
   padding: '$2 $3',
@@ -35,3 +35,7 @@ export const StyledBadge = styled('span', {
     type: 'active'
   }
 });
+
+export default function DeleteIconWrapper(props) {
+  return <StyledBadgeWrapper {...props} />;
+}

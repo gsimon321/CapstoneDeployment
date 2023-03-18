@@ -1,7 +1,7 @@
 import { styled } from '@nextui-org/react';
 
 // IconButton component will be available as part of the core library soon
-export const IconButton = styled('button', {
+const IconButton = styled('button', {
   dflex: 'center',
   border: 'none',
   outline: 'none',
@@ -17,3 +17,6 @@ export const IconButton = styled('button', {
     opacity: '0.6'
   }
 });
+export default function IconButtonWrapper(props) {
+  return <DeleteIcon {...props} />;
+}
