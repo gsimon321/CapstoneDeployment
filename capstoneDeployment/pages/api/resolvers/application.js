@@ -6,6 +6,7 @@ module.exports = {
   Query: {
     //look up object syntax
     async application(_, { ID }) {
+      console.log("hello")
       return await Application.findByID(ID)
     },
     async getApplications(_, { amount, positionID }) {
