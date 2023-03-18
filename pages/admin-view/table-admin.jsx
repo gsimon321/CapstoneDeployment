@@ -1,8 +1,8 @@
 import { Table, Row, Col, Tooltip, User, Text } from "@nextui-org/react";
-import { StyledBadge } from "../club-view/components/StyledBadge";
-import { IconButton } from "../club-view/components/IconButton";
-import { EditIcon } from "../club-view/components/EditIcon";
-import { DeleteIcon } from "../club-view/components/DeleteIcon";
+import StyledBadge  from "../club-view/components/StyledBadge";
+import  IconButton  from "../club-view/components/IconButton";
+import  EditIcon  from "../club-view/components/EditIcon";
+import  DeleteIcon  from "../club-view/components/DeleteIcon";
 import {useState, React, useEffect} from 'react'
 import { Modal, Button,  Input,  Checkbox } from "@nextui-org/react";
 import { gql, useMutation } from '@apollo/client'

@@ -1,8 +1,8 @@
 import { Table, Row, Col, Tooltip, User, Text } from "@nextui-org/react";
-import { StyledBadge } from "./StyledBadge";
-import { IconButton } from "./IconButton";
-import { EditIcon } from "./EditIcon";
-import { DeleteIcon } from "./DeleteIcon";
+import  StyledBadge  from "./StyledBadge";
+import  IconButton  from "./IconButton";
+import  EditIcon  from "./EditIcon";
+import  DeleteIcon  from "./DeleteIcon";
 import {useState, React, useEffect} from 'react'
 import { Modal, Button,  Input,  Checkbox } from "@nextui-org/react";
 import Dropdown from './dropdown'
