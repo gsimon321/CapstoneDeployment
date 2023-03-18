@@ -28,7 +28,7 @@
     "eslint": "^8.29.0",
     "fs": "^0.0.1-security",
     "graphql": "^16.6.0",
-    "graphql-upload": "^16.0.2",
+    "graphql-upload": "^15.0.2",
     "jsonwebtoken": "^8.5.1",
     "micro": "^9.4.1",
     "mongoose": "^6.7.5",
