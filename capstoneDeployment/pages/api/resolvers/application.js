@@ -16,43 +16,21 @@ module.exports = {
     },
   },
   Mutation: {
-    async function createApplication(
-      _,
-      {
-        applicationInput: {
-          name,
-          email,
-          description,
-          qA,
-          positionID,
-          resumeID,
-        },
-      },
-    ) {
-      const createdApplication = new Application({
-        name: name,
-        email: email,
-        description: description,
-        qA: qA,
-        positionID: positionID,
-        resumeID: resumeID,
-      })
-
-      const res = await createdApplication.save() //This is where MongoDB actually saves
-
+    createApplication: async (_, { applicationInput: { name, email, description, qA, positionID, resumeID } }) => {
+      const createdApplication = new Application({ name, email, description, qA, positionID, resumeID })
+      
+      const res = await createdApplication.save()
+  
       // Send a confirmation email
-      let testAccount = {
-        user: user,
-        pass: pass,
-      }
-
+      const testAccount = { user, pass }
+  
       const options = {
         from: testAccount.user,
         to: email,
         subject: 'Thanks for Applying!',
         text: "Hi BOT Woohoo! \n  We just received your application for the Backend Software Engineer - New Grad 2023 role. We're so excited you're interested in growing your career at Dune Mountain.",
       }
-
+  
       transporter.sendMail(options, function (err, info) {
         if (err) {
           console.log(err)
@@ -60,7 +38,7 @@ module.exports = {
         }
         console.log('Sent: ' + info.response)
       })
-
+  
       return {
         id: res.id,
         ...res._doc,
