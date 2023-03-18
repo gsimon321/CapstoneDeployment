@@ -5,7 +5,6 @@ import { createTheme } from '@nextui-org/react'
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
 import { useSSR } from '@nextui-org/react'
-const { isBrowser } = useSSR()
 const theme = createTheme({
   type: 'dark', // it could be "light" or "dark"
   theme: {
@@ -36,6 +35,7 @@ const theme = createTheme({
 })
 
 export default function App({ Component, pageProps }) {
+  const { isBrowser } = useSSR()
 
   const uploadLink = createUploadLink({ 
     uri: "http://localhost:3000/api/graphql" });
