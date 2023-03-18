@@ -1,4 +1,4 @@
-export default DeleteIcon = ({
+const DeleteIcon = ({
     fill,
     size,
     height,
@@ -53,3 +53,6 @@ export default DeleteIcon = ({
     );
   };
   
+  export default function DeleteIconWrapper(props) {
+    return <DeleteIcon {...props} />;
+  }
