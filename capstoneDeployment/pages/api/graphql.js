@@ -1,20 +1,21 @@
 import  {  ApolloServer  }  from  "apollo-server-micro";
+import Cors from 'micro-cors'
 import connectDb from './config/connectionDB'
 // import processRequest from "graphql-upload/processRequest.js";
 console.log(ApolloServer)
 
-
+const cors = Cors()
 const typeDefs = require("./schemas/typdefs")
 const resolvers = require("./resolvers/index")
 connectDb();
 
 
-const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, uploads:true, persistedQueries: {
+const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, uploads:true, introspection:true, playground:true, persistedQueries: {
   cache: new Map(),
 }, });
 const startServer = apolloServer.start()
 
-export default async (req, res) => {
+export default cors(async (req, res) => {
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader(
         "Access-Control-Allow-Origin",
@@ -47,7 +48,7 @@ export default async (req, res) => {
   await startServer
 
   return apolloServer.createHandler({ path: '/api/graphql' })(req, res)
-}
+})
 
 export const config = {
   api: { bodyParser: false }
