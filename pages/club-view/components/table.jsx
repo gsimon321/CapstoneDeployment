@@ -147,7 +147,7 @@ export default function table(props) {
           </Col>
         );
       case "year":
-        return <StyledBadgeWrapper type={user.status}>{cellValue}</StyledBadge>;
+        return <StyledBadgeWrapper type={user.status}>{cellValue}</StyledBadgeWrapper>;
 
       case "actions":
         return (
