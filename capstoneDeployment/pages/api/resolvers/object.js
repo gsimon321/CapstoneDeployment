@@ -2,7 +2,6 @@ import {createWriteStream} from 'fs'
 import { getNamedType } from 'graphql'
 import {parse, join} from 'path'
 import {baseURL, S3_ACCESS_KEY, S3_SECRET_ACCESS_KEY, S3_BUCKET_REGION, S3_BUCKET_NAME} from '../config/default.json'
-import GraphQLUpload  from 'graphql-upload/GraphQLUpload.js'
 const AWS = require('aws-sdk')
 const object = require('../models/Object')
 
@@ -94,5 +93,4 @@ module.exports = {
 
     }
   },
-  Upload: GraphQLUpload,
 };
