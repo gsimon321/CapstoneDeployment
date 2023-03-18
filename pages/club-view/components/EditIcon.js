@@ -43,5 +43,5 @@ const EditIcon = ({
   };
   
   export default function EditIconWrapper(props) {
-    return <DeleteIcon {...props} />;
+    return <EditIcon {...props} />;
   }

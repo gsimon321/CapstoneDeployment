@@ -37,5 +37,5 @@ const StyledBadge = styled('span', {
 });
 
 export default function DeleteIconWrapper(props) {
-  return <StyledBadgeWrapper {...props} />;
+  return <StyledBadge {...props} />;
 }

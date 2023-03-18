@@ -18,5 +18,5 @@ const IconButton = styled('button', {
   }
 });
 export default function IconButtonWrapper(props) {
-  return <DeleteIcon {...props} />;
+  return <IconButton {...props} />;
 }
