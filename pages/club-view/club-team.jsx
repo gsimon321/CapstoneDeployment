@@ -7,11 +7,8 @@ import { Input, Spacer, Text, Card, Grid } from '@nextui-org/react'
 import { Router, useRouter } from 'next/router'
 import { gql } from '@apollo/client'
 import client from '../../components/apollo-client'
-import { useSSR } from '@nextui-org/react'
 
 import Table from './components/table'
-const { isBrowser } = useSSR()
-isBrowser && ( )
 
 export default function clubTeam(props) {
 

@@ -4,6 +4,7 @@ import { NextUIProvider } from '@nextui-org/react'
 import { createTheme } from '@nextui-org/react'
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
+import { useSSR } from '@nextui-org/react'
 
 const theme = createTheme({
   type: 'dark', // it could be "light" or "dark"
@@ -44,10 +45,12 @@ export default function App({ Component, pageProps }) {
       cache: new InMemoryCache(),
 });
   return (
-    <NextUIProvider theme={theme}>
+    <SSRProvider>
+      <NextUIProvider theme={theme}>
       <ApolloProvider client={client}>
       <Component {...pageProps} />
       </ApolloProvider>
     </NextUIProvider>
+    </SSRProvider>
   )
 }
