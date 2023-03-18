@@ -10,9 +10,7 @@ const resolvers = require("./resolvers/index")
 connectDb();
 
 
-const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, uploads:true, introspection:true, playground:true, persistedQueries: {
-  cache: new Map(),
-}, });
+const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, introspection:true, playground:true, context: ({req}) =>{},});
 const startServer = apolloServer.start()
 
 export default cors(async (req, res) => {
