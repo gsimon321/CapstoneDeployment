@@ -1,34 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+﻿# Group_16_Capstone
 
-## Getting Started
+What do I need in order to run this project?
 
-First, run the development server:
+- Node above version 16
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+How to use this repo?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Once cloned CD into the client/ues-connect-client folder
+- Run the following command: `npm i`, This will install all necessary dependencies
+- Now to launch the project run: `npm run dev`
+- From here you can launch your favourite browser and go to: `http://localhost:3000/`
+- If you wish to purely use the backend API interface go to: `http://localhost:3000/api/graphql`
+  - This will launch the Apollo Graphql Interface. This is very similar to Postman, however, these are Graphql endpoints and there for are not the same
+  as classical REST endpoints. I would advise looking at documentation here in order to understand how these queries work: https://www.apollographql.com/docs/graphos/explorer/sandbox/
+- If you wish to access the front end (yes they are connected right now and work in unison by just running the npm run dev command) you can choose to either look at the student view, or the club view.
+  - The club view will require a username and password. You can use the following dummy credentials: username`test@gmail.com` and password: `password`
+  - The student view has no login (yes this was a design choice)
+- If you wish to see only the mongoDB server that we have set up you can use the following URI key: `mongodb+srv://gabor:group16@cluster0.epckap1.mongodb.net/?retryWrites=true&w=majority`. (yes this is also connected to the backend and as such is connected to the front end as well)
+  - If you have never used mongoDB before this URI key gives you access to the database and you can simply go to mongoDB's website, sign up, and place this into their web portal in order to be able to view all the collections.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Email: group16se4450@gmail.com
+Password: Dune123456

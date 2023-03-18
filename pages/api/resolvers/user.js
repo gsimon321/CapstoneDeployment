@@ -1,9 +1,14 @@
+import { user, pass } from '../config/default.json'
 const User = require('../models/User')
 const Club = require('../models/Club')
 const { ApolloError } = require('apollo-server-errors')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const config = require('../config/default.json')
+const transporter = require('../email/transporter')
+import { Router, useRouter } from 'next/router'
+
+
 
 /**
  *
@@ -41,13 +46,30 @@ module.exports = {
       })
 
       // Create Token
-      const token = jwt.sign(
-        { id: user.id, role: user.role },
-        config.jwtSecret,
-        { expiresIn: 3600 },
-      )
+      try {
+        const token = jwt.sign(
+          { id: user.id, role: user.role },
+          config.jwtSecret,
+          { expiresIn: 3600 },
+        )
 
-      user.token = token
+        user.token = token
+
+        const url = `http://localhost:3000/confirmation/${token}`;
+
+        const options = {
+          from: user,
+          to: email,
+          subject: 'Confirm Email!',
+          html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`
+          }
+
+        await transporter.sendMail(options, function (err, info) {
+          console.log('Sent: ' + info.response)
+        })
+      } catch (e) {
+        console.log(e)
+      }
 
       //   const clubExisits = await Club.findOne({ email});
       //   if (clubExisits) {
@@ -77,6 +99,10 @@ module.exports = {
     async loginUser(_, { loginInput: { email, password } }) {
       // Check if user exists
       const user = await User.findOne({ email })
+      console.log(user.confirmed)
+      // if (!user.confirmed) {
+      //   throw new Error('Please confirm your email to login')
+      // }
 
       // Check if password is correct && Create new Token
       if (user && (await bcrypt.compare(password, user.password))) {
@@ -86,15 +112,34 @@ module.exports = {
           { expiresIn: 3600 },
         )
         user.token = token
-
+       // return all the admins objects.
+        if(user.role == "MASTER") {
+          console.log("THIS MAN IS A MASTER")
+          const adminUsers = await User.find({ role: "ADMIN" })
+          adminUsers.forEach(
+            element => 
+            element.userID = element._id
+            // console.log(element._id)
+            // console.log(element.userID)
+            // element.userID = element._id
+            );
+          // console.log(user._id)
+          return {
+            userRole: user.role,
+            adminList: adminUsers
+          }       
+        }
         // Find associated Club
         const clubID = user.clubID
 
+        // 
         const userClub = await Club.findById(clubID)
+        console.log(user.role)
 
         return {
+          role: user.role,
           id: userClub.id,
-          ...userClub._doc,
+          ...userClub._doc
         }
       }
       throw new ApolloError('Incorrect password', 'INCORRECT_PASSWORD')

@@ -6,9 +6,10 @@ import { CSS, Button, Input, Text, Textarea, Loading } from '@nextui-org/react'
 import { useState, useRef, useEffect, localStorage } from 'react'
 import ImageProcess from './image-processing'
 import useSWR from 'swr'
-import { gql } from '@apollo/client'
+import { gql, useMutation } from '@apollo/client'
 import client from '../apollo-client'
 import { Router, useRouter } from 'next/router'
+import graphql from 'graphql'
 
 export default function clubInfo(props) {
   const [clubName, setClubName] = useState(
@@ -24,11 +25,23 @@ export default function clubInfo(props) {
   const [load, setLoad] = useState(false)
   const router = useRouter()
 
-  const onChangeImage = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex)
-    setImages(imageList)
-  }
+  const UPLOAD_FILE = gql`
+mutation UploadFile($file: Upload!) {
+  uploadFile(file: $file)
+}
+`;
+
+  const [fileUpload] = useMutation(UPLOAD_FILE, {
+    onCompleted: (data) => console.log(data),
+});
+const handleFileChange = (e) => {
+  const file = e.target.files;
+  if (!file) return;
+  fileUpload({ variables: { file } });
+};
+   
+  
+   
 
   const save = async function () {
    
@@ -107,10 +120,19 @@ export default function clubInfo(props) {
             }}
           />
         </div>
+
+        <input
+      type="file"
+      name="GraphQLUploadForMedium"
+      onChange={handleFileChange}
+    />
+
+
+
         <div className={styles.imageBox}>
           <Text size="larger">Set Your Club Logo</Text>
 
-          <ImageProcess onChange={onChangeImage} images={images}></ImageProcess>
+          {/* <ImageProcess onChange={onChangeImage} images={images}></ImageProcess> */}
         </div>
         <div className={styles.infoBox}>
           <Textarea

@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema({
   clubID: {
     type: String,
   },
+  confirmed: {
+    type: Boolean,
+    default: false
+  }
 })
 
 const User = (module.exports =

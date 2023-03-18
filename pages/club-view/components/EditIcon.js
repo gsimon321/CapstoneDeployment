@@ -1,4 +1,4 @@
-export default EditIcon = ({
+export const EditIcon = ({
     fill,
     size,
     height,

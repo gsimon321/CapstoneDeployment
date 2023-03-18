@@ -25,17 +25,20 @@ module.exports = gql`
     registerUser(registerInput: RegisterInput): User
     loginUser(loginInput: LoginInput): Club
     objectUploader(filename: Upload!, objType:String, objId: String): String!
+    uploadFile(file: Upload!): Boolean
     addExec(clubId: String, execAdd: ExecAdd): Exec
     editExec(clubId: String, execInput: ExecsInput): Exec
   }
 
   type Club {
+    userRole: String
     _id: String
     name: String
     department: String
     description: String
     logoURL: String
     execs: [Execs]
+    adminList: [User]
   }
 
   input RegisterInput {
@@ -84,6 +87,7 @@ module.exports = gql`
   }
 
   type User {
+    userID: String
     name: String
     email: String
     password: String

@@ -9,7 +9,7 @@ const StudentExecCard = (props) => {
             <span className="sr-only">{props.data.name}</span>
             <img
               className="h-10 w-10 rounded-full"
-              src="https://stackdiary.com/140x100.png"
+              src={props.data.headshotURL}
             ></img>
           </a>
         </div>

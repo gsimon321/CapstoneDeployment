@@ -2,6 +2,9 @@ import '../styles/globals.css'
 // import '../styles/index.css'
 import { NextUIProvider } from '@nextui-org/react'
 import { createTheme } from '@nextui-org/react'
+import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+// import client from './apollo-client.js'
+import { createUploadLink } from "apollo-upload-client";
 
 const theme = createTheme({
   type: 'dark', // it could be "light" or "dark"
@@ -33,9 +36,19 @@ const theme = createTheme({
 })
 
 export default function App({ Component, pageProps }) {
+
+  const uploadLink = createUploadLink({ 
+    uri: "http://localhost:3000/api/graphql" });
+
+    const client = new ApolloClient({
+      link: uploadLink,
+      cache: new InMemoryCache(),
+});
   return (
     <NextUIProvider theme={theme}>
+      <ApolloProvider client={client}>
       <Component {...pageProps} />
+      </ApolloProvider>
     </NextUIProvider>
   )
 }

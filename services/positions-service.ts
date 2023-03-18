@@ -48,7 +48,7 @@ export async function getPosition(filters: {
     id: filters.position_id,
   }
   return client
-    .query({ query, variables })
+    .query({ query, variables, fetchPolicy: "network-only" })
     .then((response) => {
       console.log(response['data']['position'])
       return response['data']['position']
@@ -74,10 +74,11 @@ export async function getPositions(filters: {
   const variables = {
     clubId: filters['clubId'],
   }
-  return client
-    .query({ query, variables })
+  return await client
+    .query({ query, variables, fetchPolicy: "network-only" })
     .then((response) => {
       console.log('got positions')
+      console.log(response['data']['getPositions'])
       return response['data']['getPositions']
     })
     .catch((e) => {

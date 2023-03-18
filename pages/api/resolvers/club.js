@@ -32,7 +32,7 @@ module.exports = {
           role: res.execs[counter].role,
           year: res.execs[counter].year,
           program: res.execs[counter].program,
-          headshotURL: null,
+          headshotURL: "https://stackdiary.com/140x100.png",
         }
         
         finalRes.execs.push(newExec)

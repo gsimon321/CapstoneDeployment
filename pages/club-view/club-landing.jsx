@@ -7,8 +7,9 @@ import { useState, useEffect, useRef, localStorage } from 'react'
 import ClubInfo from './club-info'
 import ClubApps from './club-apps'
 import ClubTeams from './club-team'
-import ClubPositions  from './club-positions'
-import ApplicationPage  from './club-applications'
+// import { ClubPositions } from './club-positions'
+import { ClubPositions } from "./modal-positions";
+import { ApplicationPage } from './club-applications'
 import { Input, Spacer, Text } from '@nextui-org/react'
 import { Router, useRouter } from 'next/router'
 

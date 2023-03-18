@@ -1,6 +1,6 @@
 import { user, pass } from '../config/default.json'
 const Application = require('../models/Application')
-const nodemailer = require('nodemailer')
+const transporter = require('../email/transporter')
 
 module.exports = {
   Query: {
@@ -40,27 +40,17 @@ module.exports = {
 
       const res = await createdApplication.save() //This is where MongoDB actually saves
 
-      // Send a email
+      // Send a confirmation email
       let testAccount = {
         user: user,
         pass: pass,
       }
 
-      const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false,
-        auth: {
-          user: testAccount.user, // generated ethereal user
-          pass: testAccount.pass, // generated ethereal password
-        },
-      })
-
       const options = {
         from: testAccount.user,
         to: email,
         subject: 'Thanks for Applying!',
-        text: " Hi BOT Woohoo! We just received your application for the Backend Software Engineer - New Grad 2023 role. We're so excited you're interested in growing your career at Dune Mountain.",
+        text: "Hi BOT Woohoo! \n  We just received your application for the Backend Software Engineer - New Grad 2023 role. We're so excited you're interested in growing your career at Dune Mountain.",
       }
 
       transporter.sendMail(options, function (err, info) {

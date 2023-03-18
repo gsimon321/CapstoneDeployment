@@ -16,25 +16,49 @@ export default function signIn() {
   const username = useRef('')
   const password = useRef('')
 
-  const logIn = async function () {
-    const mutationQ = gql`
+  const mutationQ = gql`
       mutation Mutation($loginInput: LoginInput) {
         loginUser(loginInput: $loginInput) {
-          department
+          userRole
           _id
+          department
           description
-          name
           execs {
-            _id
             name
-            program
             role
             year
+            program
+          }
+          name
+          adminList {
+            name
+            email
+            password
+            role
+            token
+            clubName
+            clubID
+            userID
           }
         }
       }
     `
 
+const queryQ = gql`query Query($id: ID!) {
+    club(ID: $id) {
+      execs {
+        _id
+        headshotURL
+        name
+        program
+        role
+        year
+      }
+      logoURL
+    }
+  }`
+
+  const logIn = async function () {
     client
       .mutate({
         mutation: mutationQ,
@@ -46,19 +70,63 @@ export default function signIn() {
         },
       })
       .then((data) => {
-        let clubData = data.data.loginUser
-        clubData.execs.map((item,index)=>{delete item.__typename;})
 
-        router.push({
-          pathname: 'club-landing',
-          query: {
-            id: clubData._id,
-            name: clubData.name,
-            department: clubData.department,
-            description: clubData.description,
-            execs: JSON.stringify(clubData.execs),
-          },
-        })
+        console.log("initial", data)
+
+        let role = data.data.loginUser.userRole
+
+        let payload = data.data.loginUser.adminList
+
+        if(role=="MASTER")
+        {
+          router.push({
+            pathname: '../admin-view/admin-landing',
+            query: {
+              admins:JSON.stringify(payload)
+            },
+          })
+
+        }
+        else
+        {
+          let clubData = data.data.loginUser
+          client.query({
+            query: queryQ,
+            variables: {
+                id: clubData._id
+            },
+          })
+          .then((data2) => {
+      
+            clubData.execs = data2.data.club.execs
+            clubData.logoURL = data2.data.club.execs.logoURL
+            console.log(clubData)
+  
+          router.push({
+            pathname: 'club-landing',
+            query: {
+              id: clubData._id,
+              name: clubData.name,
+              department: clubData.department,
+              description: clubData.description,
+              execs: JSON.stringify(clubData.execs),
+            },
+          })
+      
+          })
+          .catch((e) => {
+            alert(e.message)
+          })
+  
+
+        }
+
+
+
+
+
+
+
 
       })
       .catch((e) => {
@@ -101,7 +169,7 @@ export default function signIn() {
           label="Password"
         />
 
-        <Button bordered color="primary" onPress={logIn}>
+        <Button  className='bg-blue-600' onPress={logIn}>
           Log In
         </Button>
       </div>

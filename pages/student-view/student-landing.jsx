@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import APILoadingScreen from './loading-screen'
 import { gql } from '@apollo/client'
 import client from '../apollo-client'
-import { BsGearWideConnected } from 'react-icons/bs'
 import StudentHeader from './student-header'
 
 export default function studentLanding(props) {
@@ -46,7 +45,7 @@ export default function studentLanding(props) {
   }
 
   return (
-    <div className="flex flex-col bg-slate-200 w-full h-full text-slate-800 items-center ">
+    <div className="flex flex-col bg-slate-200 w-full min-h-screen text-slate-800 items-center">
       <div className="ml-3 flex flex-col items-center">
         <StudentHeader></StudentHeader>
         <input
@@ -55,23 +54,26 @@ export default function studentLanding(props) {
           onChange={(event) => setSearchTerm(event.target.value)}
         />
       </div>
-      {isLoading ? (
-        <APILoadingScreen />
-      ) : (
-        ClubData.filter((data) => {
-          if (searchTerm === '') {
-            return data
-          } else if (
-            data.name.toLowerCase().includes(searchTerm.toLowerCase())
-          ) {
-            return data
-          }
-        })
-          .slice(0)
-          .map((data, index) => (
-            <StudentCard key={index} index={index} data={data} />
-          ))
-      )}
+      <div className='w-full px-8 flex flex-wrap -m-2 pt-4'>
+        {isLoading ? (
+          <APILoadingScreen />
+        ) : (
+          ClubData.filter((data) => {
+            if (searchTerm === '') {
+              return data
+            } else if (
+              data.name.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              return data
+            }
+          })
+            .slice(0)
+            .map((data, index) => (
+              <StudentCard key={index} index={index} data={data} />
+            ))
+        )}
+      </div>
     </div>
   )
+
 }

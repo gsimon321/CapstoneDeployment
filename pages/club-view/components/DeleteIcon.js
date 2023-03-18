@@ -1,4 +1,4 @@
-export default DeleteIcon = ({
+export const DeleteIcon = ({
     fill,
     size,
     height,

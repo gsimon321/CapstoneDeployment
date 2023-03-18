@@ -16,7 +16,9 @@ export default function clubTeam(props) {
   function save(newTeam) {
 
     let sendTeam = newTeam.map((item)=>({...item}))
-    // sendTeam.forEach((item, index)=>{ delete sendTeam[index]._id})
+    sendTeam.forEach((item, index)=>{ delete item.__typename; delete item.headshotURL})
+
+    console.log("sendteam", sendTeam)
 
     const mutationQ = gql`
       mutation Mutation($id: ID!, $clubInput: ClubInput) {

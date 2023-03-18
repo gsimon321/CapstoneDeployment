@@ -12,6 +12,7 @@ export default function StudentPositions(props) {
   const [userQA, setUserQA] = useState([{ question: '', answer: '' }])
   const [userEmail, setUserEmail] = useState('')
   const [userName, setUserName] = useState('')
+  const [applicationId, setApplicationId] = useState('')
 
   const handleFormChange = (event, index) => {
     let data = [...userQA]
@@ -40,6 +41,12 @@ export default function StudentPositions(props) {
     //sets isLiked to the opposite of the current isReadMore
     setIsReadMore(!isReadMore)
   }
+
+  const [filename, setSelectedFile] = useState(null);
+
+  const handleFileInputChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
 
   const router = useRouter()
   const positionId = router.query.positionId
@@ -93,6 +100,31 @@ export default function StudentPositions(props) {
       })
   }
 
+
+  const handleFormSubmit = async function () {
+    const submitApplication = gql`
+    mutation ObjectUploader($filename: Upload!, $objType: String, $objId: String) {
+      objectUploader(filename: $filename, objType: $objType, objId: $objId)
+    }
+    `
+    client
+      .mutate({
+        mutation: submitApplication,
+        variables: {
+          filename: filename,
+          objType: "resume",
+          objId: '639036756318e7127b127811'
+        },
+      })
+      .then((result) => {
+        console.log(result)
+        console.log('poo')
+      })
+      .catch((e) => {
+        alert(e.message)
+      })
+  }
+
   const submitApplicationFunc = async function () {
     const submitApplication = gql`
       mutation Mutation($applicationInput: ApplicationInput) {
@@ -116,8 +148,8 @@ export default function StudentPositions(props) {
       })
       .then((result) => {
         console.log(result)
+        setApplicationId(result)
         alert('Thank you for Applying!')
-        window.location.reload()
       })
       .catch((e) => {
         alert(e.message)
@@ -138,24 +170,23 @@ export default function StudentPositions(props) {
           <div className="flex self-center space-x-2 pb-2">
             {positionData.skills != undefined
               ? positionData.skills.map((skill) =>
-                  skill !== null ? (
-                    <div className="self-center flex flex-row text-slate-50">
-                      <div className="bg-slate-500 text-base font-bold rounded-md px-2 self-center">
-                        {skill.skill}
-                      </div>
+                skill !== null ? (
+                  <div className="self-center flex flex-row text-slate-50">
+                    <div className="bg-slate-500 text-base font-bold rounded-md px-2 self-center">
+                      {skill.skill}
                     </div>
-                  ) : (
-                    ''
-                  ),
-                )
+                  </div>
+                ) : (
+                  ''
+                ),
+              )
               : ''}
           </div>
         </div>
         <div className="px-2 mb-3 flex flex-col self-center">
           <div
-            className={` text-sm text-center self-center ${
-              isReadMore && 'line-clamp-2'
-            }`}
+            className={` text-sm text-center self-center ${isReadMore && 'line-clamp-2'
+              }`}
           >
             {' '}
             {/* Uses tailwind line-clamp to truncate the explanation until user clicks readmore */}
@@ -168,6 +199,29 @@ export default function StudentPositions(props) {
             {isReadMore ? 'Read More...' : 'Read Less...'}
           </button>
         </div>
+        <form onSubmit={handleFormSubmit}>
+          <div className="flex flex-col items-center justify-center">
+            <label htmlFor="resume" className="mb-2 font-bold text-gray-700">
+              Upload Your Resume
+            </label>
+            <input
+              type="file"
+              id="resume"
+              name="resume"
+              className="py-2 px-4 border border-gray-400 rounded-lg shadow-md text-gray-700 font-medium"
+              onChange={handleFileInputChange}
+            />
+          </div>
+          <div className="mt-4">
+            <button
+              type="submit"
+              className="py-2 px-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+              disabled={!filename}
+            >
+              Upload
+            </button>
+          </div>
+        </form>
         <div className="flex self-center space-x-2">
           <div className="flex flex-col self-center">
             <label className="form-label inline-block mb-2 text-lg font-bold self-center">
