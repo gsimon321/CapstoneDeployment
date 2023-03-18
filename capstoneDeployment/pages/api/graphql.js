@@ -10,10 +10,10 @@ const resolvers = require("./resolvers/index")
 connectDb();
 
 
-const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, introspection:true, playground:true, context: ({req}) =>{},});
+const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, context: ({req}) =>{},introspection:true, playground:true, });
 const startServer = apolloServer.start()
 
-export default cors(async (req, res) => {
+export default cors( async (req, res) => {
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader(
         "Access-Control-Allow-Origin",
