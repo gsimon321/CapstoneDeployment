@@ -1,7 +1,6 @@
 const { gql } = require('apollo-server-micro')
 
-module.exports = gql`
-  # scalar Upload
+module.exports = gql` 
   type Query {
     club(ID: ID!): Club
     getClubs(amount: Int): [Club]
@@ -24,8 +23,6 @@ module.exports = gql`
     deleteApplication(ID: ID!): Boolean!
     registerUser(registerInput: RegisterInput): User
     loginUser(loginInput: LoginInput): Club
-    # objectUploader(filename: Upload!, objType:String, objId: String): String!
-    # uploadFile(file: Upload!): Boolean
     addExec(clubId: String, execAdd: ExecAdd): Exec
     editExec(clubId: String, execInput: ExecsInput): Exec
   }
@@ -164,10 +161,6 @@ module.exports = gql`
     question: String
     answer: String
   }
-
-  # input TheFile{
-  #   filename: Upload!
-  # }
 
   type UploadedFileResponse {
     filename: String!
