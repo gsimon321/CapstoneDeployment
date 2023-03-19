@@ -6,7 +6,7 @@ import connectDb from './config/connectionDB'
 console.log(ApolloServer)
 
 const cors = Cors()
-const typeDefs = require("./schemas/typedefs")
+const typeDefs = require("./schemas/typedefs.graphql")
 const resolvers = require("./resolvers/index")
 export const schema = makeExecutableSchema({ typeDefs, resolvers })
 connectDb();
