@@ -1,4 +1,4 @@
-/* GraphQL */ `
+const typeDefs = /* GraphQL */ `
 
   schema {
     query: Query
