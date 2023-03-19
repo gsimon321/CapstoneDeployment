@@ -5,7 +5,7 @@
     mutation: Mutation
   }
 
-  scalar Upload
+  # scalar Upload
   type Query {
     club(ID: ID!): Club!
     getClubs(amount: Int): [Club]
@@ -28,8 +28,8 @@
     deleteApplication(ID: ID!): Boolean!
     registerUser(registerInput: RegisterInput): User
     loginUser(loginInput: LoginInput): Club
-    objectUploader(filename: Upload!, objType:String, objId: String): String!
-    uploadFile(file: Upload!): Boolean
+    # objectUploader(filename: Upload!, objType:String, objId: String): String!
+    # uploadFile(file: Upload!): Boolean
     addExec(clubId: String, execAdd: ExecAdd): Exec
     editExec(clubId: String, execInput: ExecsInput): Exec
   }
