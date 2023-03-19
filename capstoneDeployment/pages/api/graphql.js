@@ -8,7 +8,7 @@ console.log(ApolloServer)
 const cors = Cors()
 const typeDefs = require("./schemas/typedefs.graphql").default
 const resolvers = require("./resolvers/index")
-export const schema = makeExecutableSchema({ typeDefs, resolvers })
+export const schema = makeExecutableSchema({ typeDefs: typeDefs, resolvers, })
 connectDb();
 
 
