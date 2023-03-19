@@ -1,4 +1,5 @@
-import  {  ApolloServer, makeExecutableSchema  }  from  "apollo-server-micro";
+import  {  ApolloServer }  from  "apollo-server-micro";
+import { makeExecutableSchema } from '@graphql-tools/schema'
 import Cors from 'micro-cors';
 import connectDb from './config/connectionDB'
 // import processRequest from "graphql-upload/processRequest.js";
@@ -7,10 +8,7 @@ console.log(ApolloServer)
 const cors = Cors()
 const typeDefs = require("./schemas/typdefs")
 const resolvers = require("./resolvers/index")
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers,
-});
+export const schema = makeExecutableSchema({ typeDefs, resolvers })
 connectDb();
 
 
