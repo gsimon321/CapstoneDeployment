@@ -4,7 +4,6 @@ const typeDefs = `
     mutation: Mutation
   }
 
-  # scalar Upload
   type Query {
     club(ID: ID!): Club!
     getClubs(amount: Int): [Club]
@@ -27,8 +26,6 @@ const typeDefs = `
     deleteApplication(ID: ID!): Boolean!
     registerUser(registerInput: RegisterInput): User
     loginUser(loginInput: LoginInput): Club
-    # objectUploader(filename: Upload!, objType:String, objId: String): String!
-    # uploadFile(file: Upload!): Boolean
     addExec(clubId: String, execAdd: ExecAdd): Exec
     editExec(clubId: String, execInput: ExecsInput): Exec
   }
