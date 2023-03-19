@@ -1,6 +1,12 @@
 const { gql } = require('apollo-server-micro')
 
 module.exports = gql`
+
+  schema {
+    query: Query
+    mutation: Mutation
+  }
+
   scalar Upload
   type Query {
     club(ID: ID!): Club!
