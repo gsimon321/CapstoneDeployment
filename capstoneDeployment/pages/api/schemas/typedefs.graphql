@@ -165,10 +165,6 @@ const typeDefs = `
     answer: String
   }
 
-  input TheFile{
-    filename: Upload!
-  }
-
   type UploadedFileResponse {
     filename: String!
     mimetype: String!
