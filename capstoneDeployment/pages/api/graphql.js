@@ -1,4 +1,4 @@
-import  {  ApolloServer  }  from  "apollo-server-micro";
+import  {  ApolloServer, makeExecutableSchema  }  from  "apollo-server-micro";
 import Cors from 'micro-cors';
 import connectDb from './config/connectionDB'
 // import processRequest from "graphql-upload/processRequest.js";
@@ -7,10 +7,14 @@ console.log(ApolloServer)
 const cors = Cors()
 const typeDefs = require("./schemas/typdefs")
 const resolvers = require("./resolvers/index")
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers,
+});
 connectDb();
 
 
-const  apolloServer  =  new  ApolloServer({  typeDefs,  resolvers, cache: "bounded", context: ({req}) =>{},introspection:true, playground:true, });
+const  apolloServer  =  new  ApolloServer({  schema, cache: "bounded", context: ({req}) =>{},introspection:true, playground:true, });
 const startServer = apolloServer.start()
 
 export default cors( async (req, res) => {
